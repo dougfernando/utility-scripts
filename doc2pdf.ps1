@@ -1,7 +1,6 @@
 param (
     [string]$source = $(Throw "You have to specify a source path."))
 
-
 $extensionSize = 3
 if ($source.EndsWith("docx")) {
   $extensionSize = 4
@@ -16,7 +15,7 @@ $doc = $word.documents.open($source)
 $doc.SaveAs($saveaspath, $formatPDF)
 $doc.Close()
 
-echo "Convertido o arquivo: $source"
+echo "Converted file: $source"
 
 ps winword | kill
 
