@@ -14,7 +14,7 @@ do {
   $outp = & "C:\Applications\CheckPoint\SecuRemote\bin\scc.exe" connect -p "200.173.214.10";
   echo $outp
   foreach ($item in $outp) { 
-    if ($item.ToString().ToUpper().IndexOf("SUCCEEDED") -ne -1) {
+    if ($item -and $item.ToString().ToUpper().IndexOf("SUCCEEDED") -ne -1) {
       $success = $true;
       break
     }
