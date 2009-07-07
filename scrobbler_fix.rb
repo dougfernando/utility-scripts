@@ -1,3 +1,6 @@
+# Script to remove duplicate items from last.fm submission xml file
+# author: Douglas Fernando da Silva <doug.fernando at gmail.com>
+
 require "rexml/document"
 include REXML
 
