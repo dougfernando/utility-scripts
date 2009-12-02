@@ -13,18 +13,17 @@ File.open(ARGV[0]) do |file|
   history.elements.each("submissions/item") do |element|
     ts = element.elements["timestamp"].text
     if ts == last_timestamp
-      puts element.elements["track"].text
+      puts "Track: " + element.elements["track"].text + " is repeated"
       tracks_to_remove.push(element);
     else
       last_timestamp = ts
     end
   end
 
+  root = history.elements["submissions/item"].parent
   for i in 0..tracks_to_remove.length-1 do
-    element_to_rm = tracks_to_remove[i]
-    element = history.elements["submissions/item"].parent.delete(element_to_rm)
+    element = root.delete(tracks_to_remove[i])
   end
-
 end
 
 formatter = REXML::Formatters::Default.new
